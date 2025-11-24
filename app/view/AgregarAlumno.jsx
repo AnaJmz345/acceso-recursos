@@ -37,12 +37,12 @@ export default function AgregarAlumno({navigation}) {
             </Text>
         )}
 
-
+<View style={styles.resto}>
         {/* Inputs */}
         <TextInput
             style={styles.input}
             placeholder="Matrícula"
-            placeholderTextColor="#b56576"
+            placeholderTextColor="#182F70"
             onChangeText={setMatricula}
             value={matricula}
         />
@@ -50,7 +50,7 @@ export default function AgregarAlumno({navigation}) {
         <TextInput
             style={styles.input}
             placeholder="Nombre"
-            placeholderTextColor="#999"
+            placeholderTextColor="#182F70"
             onChangeText={setNombre}
             value={nombre}
         />
@@ -58,7 +58,7 @@ export default function AgregarAlumno({navigation}) {
         <TextInput
             style={styles.input}
             placeholder="Semestre"
-            placeholderTextColor="#999"
+            placeholderTextColor="#182F70"
             onChangeText={setSemestre}
             value={semestre}
         />
@@ -72,28 +72,33 @@ export default function AgregarAlumno({navigation}) {
         </TouchableOpacity>
 
         </View>
+        </View>
     );
     }
 
     const styles = StyleSheet.create({
-    container: {
+        container: {
         flex: 1,
         backgroundColor: "#fff",
-        padding: 20,
-        paddingTop: 50,
     },
 
     header: {
         backgroundColor: "#3f51b5",
-        paddingVertical: 15,
+        paddingVertical: 30,
         paddingHorizontal: 10,
-        marginBottom: 30,
+        marginBottom: 10,
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 15, // separa la flecha del texto
     },
 
     headerText: {
         color: "#fff",
         fontSize: 20,
         fontWeight: "bold",
+    },
+    resto:{
+        padding:20
     },
 
     input: {
@@ -105,7 +110,7 @@ export default function AgregarAlumno({navigation}) {
     },
 
     button: {
-        backgroundColor: "#ccc",
+        backgroundColor: "#CCD9FF",
         paddingVertical: 14,
         alignItems: "center",
         marginTop: 10,
