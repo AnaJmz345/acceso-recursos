@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { loadAlumnos } from "../controller/controller";
+import { supabase } from "../lib/supabase";
 
 
 export default function TodosAlumnos({ navigation }) {
