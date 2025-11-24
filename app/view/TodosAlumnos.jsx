@@ -8,12 +8,37 @@ export default function TodosAlumnos({ navigation }) {
   const [alumnos, setAlumnos] = useState([]);
 
   useEffect(() => {
+    // Cargar inicialmente
     async function fetchData() {
       const data = await loadAlumnos();
       setAlumnos(data);
     }
     fetchData();
+
+    //SUSCRIPCIÓN REALTIME A LA TABLA "alumnos"
+    const channel = supabase
+      .channel("alumnos-changes")
+      .on(
+        "postgres_changes",
+        {
+          event: "*",        // insert, update, delete
+          schema: "public",
+          table: "alumnos",
+        },
+        async () => {
+          console.log("Tabla alumnos cambió, refrescando...");
+          const data = await loadAlumnos();
+          setAlumnos(data);
+        }
+      )
+      .subscribe();
+
+    // Limpiar suscripción al salir
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
+
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
